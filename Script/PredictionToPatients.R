@@ -11,13 +11,13 @@ require(RMySQL)
 require(data.table)
 
 ## Connect to our database
-db <- dbConnect(MySQL(), user="", password="", dbname='', host='')
+db <- dbConnect(MySQL(), user="root", password="soo2080", dbname='dalab_disease', host='localhost')
 
 ## Check table list in database
 dbListTables(db)
 
 ## Exctract table data
-dbresult <- dbSendQuery(db,"SELECT * FROM popmedicinecity")
+dbresult <- dbSendQuery(db,"SELECT * FROM dalab_disease.popmedicinecity;")
 
 ## Fetch data from query result
 dbresult <- dbFetch(dbresult,n=-1)
@@ -166,5 +166,8 @@ total_analysis_result <- cbind(total_analysis_result,errorRate)
 total_analysis_result
 mean(total_analysis_result$errorRate)
 
-
+total_analysis_result
 write.xlsx(total_analysis_result,"F:/JJH/Desktop/gaemang.xlsx", row.names = FALSE)
+
+
+write.xlsx(result,"F:/JJH/Desktop/result.xlsx", row.names = FALSE)

@@ -1,3 +1,21 @@
+library(data.table)
+
+## Connect to our database
+db2 <- dbConnect(MySQL(), user="root", password="soo2080", dbname='dalab_disease1015', host='localhost')
+
+## Check table list in database
+dbListTables(db2)
+
+## Exctract table data
+dbresult2 <- dbSendQuery(db2,"SELECT * FROM dalab_disease1015.monthlyMedicineQty")
+
+## Fetch data from query result
+dbresult2 <- dbFetch(dbresult2,n=-1)
+
+## convert to data.table 
+result2 <- as.data.table(dbresult2)
+result2
+
 regression <- result[,sum(usedMedicineQty), by=date]
 names(regression) <- c('date','totalMedicine','realPatients')
 regression
@@ -12,7 +30,7 @@ plot(regression$totalMedicine, regression$realPatients)
 
 l_result <- lm(realPatients~totalMedicine, data=regression)
 summary(l_result)
-
+l_result
 
 # y = 0.004136*x + 813200
 predict_totalPatinets = c()

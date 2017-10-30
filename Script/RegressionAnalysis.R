@@ -1,7 +1,7 @@
 library(data.table)
 
 ## Connect to our database
-db2 <- dbConnect(MySQL(), user="root", password="soo2080", dbname='dalab_disease1015', host='localhost')
+db2 <- dbConnect(MySQL(), user="root", password="", dbname='', host='')
 
 ## Check table list in database
 dbListTables(db2)

@@ -12,7 +12,7 @@ library(data.table)
 library(readxl)
 
 ## load data set from dataset directory in this project directory
-result <- read_excel("F:/JJH/DevProject/R/DiseasePrediction_DALAB/DataSet/1th_result.xlsx")
+result <- read_excel(":/JJH/DevProject/R/DiseasePrediction_DALAB/DataSet/1th_result.xlsx")
 
 ## check dataset
 View(result)

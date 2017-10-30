@@ -11,7 +11,7 @@ require(RMySQL)
 require(data.table)
 
 ## Connect to our database
-db <- dbConnect(MySQL(), user="root", password="soo2080", dbname='dalab_disease', host='localhost')
+db <- dbConnect(MySQL(), user="root", password="", dbname='', host='')
 
 ## Check table list in database
 dbListTables(db)

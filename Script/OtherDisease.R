@@ -6,7 +6,7 @@ library(reader)
 
 
 # connect to database
-db <- dbConnect(MySQL(), user='root',password='', dbname='', host='')
+db <- dbConnect(MySQL(), user='',password='', dbname='', host='')
 dbListTables(db)
 
 # fetch astma data from database

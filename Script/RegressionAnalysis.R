@@ -1,27 +1,27 @@
 library(data.table)
 
 ## Connect to our database
-db2 <- dbConnect(MySQL(), user="root", password="", dbname='', host='')
+db2 <- dbConnect(MySQL(), user="", password="", dbname='', host='')
 
 ## Check table list in database
 dbListTables(db2)
 
 ## Exctract table data
 dbresult2 <- dbSendQuery(db2,"SELECT * FROM dalab_disease1015.monthlyMedicineQty")
-
+annualDisease <- dbSendQuery(db2, "SELECT * FROM dalab_disease1015.annual")
 ## Fetch data from query result
 dbresult2 <- dbFetch(dbresult2,n=-1)
-
+Encoding(result2$sidoName) <- 'UTF-8'
 ## convert to data.table 
 result2 <- as.data.table(dbresult2)
 result2
 
-regression <- result[,sum(usedMedicineQty), by=date]
+regression <- result2[,sum(usedMedicineQty), by='diagYm']
 names(regression) <- c('date','totalMedicine','realPatients')
 regression
-realPatients <- annualDisease[1:2]
-regression <- cbind(regression, realPatients$totalPatient)
-
+realPatients <- aa[1:2]
+regression <- cbind(regression, realPatients$total)
+View(regression)
 
 cor_result <- cor.test(regression$totalMedicine, regression$realPatients)
 cor_result
